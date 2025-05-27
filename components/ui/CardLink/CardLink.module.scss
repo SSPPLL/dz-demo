@@ -1,0 +1,21 @@
+.defaults {
+	display: inline-flex;
+	align-items: center;
+
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 20px;
+	color: var(--c-primary);
+	vertical-align: middle;
+
+	svg {
+		margin-left: 2px;
+		transition: transform .3s ease;
+	}
+
+	&:hover {
+		svg {
+			transform: translateX(2px);
+		}
+	}
+}

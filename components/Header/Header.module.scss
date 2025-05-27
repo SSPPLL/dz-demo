@@ -1,0 +1,20 @@
+.defaults {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	margin: 8px 0 25px;
+	padding: 23px 0
+}
+
+.logo {
+	font-size: 40px;
+	font-weight: 300;
+	line-height: 120%;
+}
+
+.github {
+	&_link {
+		padding: 0 8px;
+	}
+}
