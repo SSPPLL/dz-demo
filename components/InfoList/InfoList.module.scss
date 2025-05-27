@@ -1,0 +1,26 @@
+.defaults {
+	display: block;
+}
+
+.item {
+	&:not(:last-child) {
+		position: relative;
+		z-index: 1;
+		padding-right: 14px;
+
+		&::after {
+			content: '';
+
+			position: absolute;
+			z-index: 1;
+			top: calc(50% - 1px);
+			right: 6px;
+
+			width: 2px;
+			height: 2px;
+			border-radius: 50%;
+
+			background-color: var(--c-black-20);
+		}
+	}
+}
