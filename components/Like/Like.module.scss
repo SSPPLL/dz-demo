@@ -1,0 +1,32 @@
+.button {
+	cursor: pointer;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 48px;
+	height: 48px;
+	padding: 0;
+	border: 1px solid var(--c-black-70);
+	border-radius: 50%;
+
+	appearance: none;
+	background: transparent;
+	outline: none;
+
+	transition: background-color .3s ease;
+
+	svg {
+		stroke: var(--c-black-70);
+		transition: stroke .3s ease;
+	}
+}
+
+.liked {
+	background: var(--c-black-70);
+
+	svg {
+		stroke: var(--c-white);
+	}
+}
