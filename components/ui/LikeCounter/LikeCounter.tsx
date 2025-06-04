@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import styles from './LikeCounter.module.scss'
 import cn from 'classnames'
 import { LikeCounterProps } from './types'
-import LikeIcon from './like.svg'
+import { LikeIcon } from '../LikeIcon/LikeIcon'
 
 export const LikeCounter = ({
 	children,
@@ -12,7 +12,7 @@ export const LikeCounter = ({
 	return (
 		<span {...props} className={cn(styles.defaults, className)}>
 			{children}
-			<LikeIcon width={16} height={16} />
+			<LikeIcon className={styles.icon} width={16} height={16} />
 		</span>
 	)
 }
