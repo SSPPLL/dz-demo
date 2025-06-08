@@ -1,8 +1,8 @@
 import { API } from '@/app/api';
 import { PostModel } from '@/interfaces/posts.interface';
 
-export async function getPosts(): Promise<PostModel[] | null> {
-	const res = await fetch(API.posts, {
+export async function getPost(id: string): Promise<PostModel | null> {
+	const res = await fetch(API.post + id, {
 		next: {
 			revalidate: 60
 		}

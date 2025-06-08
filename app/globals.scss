@@ -12,13 +12,6 @@
 	--foreground: var(--c-black);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-		--background: var(--c-black-100);
-		--foreground: var(--c-white);
-  }
-} */
-
 body {
 	font-family: var(--font-family);
 	-webkit-font-smoothing: antialiased;
@@ -32,12 +25,6 @@ a {
 	color: inherit;
 	text-decoration: none;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-} */
 
 .container {
 	max-width: 1146px;

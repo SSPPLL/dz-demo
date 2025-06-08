@@ -1,9 +1,14 @@
 import { getPosts } from '@/api/posts';
 import { CardGrid } from '@/components/CardGrid/CardGrid';
 import { Card } from '@/components';
-import { JSX } from 'react';
+import { ReactElement } from 'react';
+import { Metadata } from 'next';
 
-export default async function Home(): Promise<JSX.Element> {
+export const metadata: Metadata = {
+	title: "My blog"
+}
+
+export default async function Home(): Promise<ReactElement> {
 	const posts = await getPosts();
 
 	if (!posts) {
@@ -23,7 +28,7 @@ export default async function Home(): Promise<JSX.Element> {
 						date='1 месяц назад'
 						likes='4'
 						image='/card-small.jpg'
-						href={`/posts/${id}`}
+						href={`/${id}`}
 					/>
 				))}
 			</CardGrid>
