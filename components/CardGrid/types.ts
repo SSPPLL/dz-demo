@@ -1,6 +1,5 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import { CardProps } from '../Card/types';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
 export interface CardGridProps extends DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement> {
-	items: CardProps[]
+	children?: ReactNode
 }
