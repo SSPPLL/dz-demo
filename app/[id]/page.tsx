@@ -1,8 +1,13 @@
 import { getPost } from '@/api/post';
 import { getPosts } from '@/api/posts';
+import { Paragraph, Title } from '@/components/ui';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ReactElement } from 'react';
+import styles from './Page.module.scss'
+import { InfoList } from '@/components';
+import Image from 'next/image';
+import { PostLike } from './components/PostLike';
 
 interface PageParams {
 	id: string
@@ -59,5 +64,30 @@ export default async function Post({ params }: {
 		notFound();
 	}
 
-	return (<h1>{post.title}</h1>)
+	return (
+		<div className={styles.wrapper}>
+			<Title className={styles.title} size='xl'>{post.title}</Title>
+			<InfoList className={styles.info} items={[
+				{
+					color: 'dark',
+					children: 'Front-end'
+				},
+				{
+					children: '1 месяц назад'
+				},
+				{
+					children: '3 минуты'
+				},
+				{
+					likes: true,
+					children: '4'
+				}
+			]} />
+			<picture className={styles.picture}>
+				<Image className={styles.image} src='/post.jpg' width={638} height={390} alt={post.title} priority={true} />
+			</picture>
+			<Paragraph className={styles.paragraph} size='lg'>{post.body}</Paragraph>
+			<PostLike className={styles.like} postId={post.id} />
+		</div>
+	)
 }

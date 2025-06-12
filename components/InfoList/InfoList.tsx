@@ -1,14 +1,14 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import styles from './InfoList.module.scss'
 import cn from 'classnames'
 import { InfoListProps } from './types'
 import { Info, LikeCounter } from '../ui'
 
-export const InfoList = ({
+export const InfoList: FC<InfoListProps> = ({
 	className,
 	items,
 	...props
-}: InfoListProps): ReactElement => {
+}): ReactElement => {
 	return (
 		<div {...props} className={cn(styles.defaults, className)}>
 			{items.map(({ className, likes, ...itemProps }, index) => {
