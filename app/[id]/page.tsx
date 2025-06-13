@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ReactElement } from 'react';
 import styles from './Page.module.scss'
-import { InfoList } from '@/components';
+import { CommentForm, InfoList } from '@/components';
 import Image from 'next/image';
 import { Comments, PostLike } from './components';
 import { getComments } from '@/api/comments';
@@ -93,6 +93,7 @@ export default async function Post({ params }: {
 			<PostLike className={styles.like} postId={post.id} />
 			<Title as='h3' size='lg' className={styles['comments-title']}>Комментарии</Title>
 			{comments && <Comments comments={comments} />}
+			<CommentForm postId={post.id} className={styles.form} />
 		</div>
 	)
 }

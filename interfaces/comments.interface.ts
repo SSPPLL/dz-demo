@@ -5,3 +5,8 @@ export interface CommentModel {
 	email: string
 	body: string
 }
+
+export interface CommentFormValues {
+	name: string;
+	body: string
+}
