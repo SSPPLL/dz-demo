@@ -7,7 +7,8 @@ import { ReactElement } from 'react';
 import styles from './Page.module.scss'
 import { InfoList } from '@/components';
 import Image from 'next/image';
-import { PostLike } from './components/PostLike';
+import { Comments, PostLike } from './components';
+import { getComments } from '@/api/comments';
 
 interface PageParams {
 	id: string
@@ -64,6 +65,8 @@ export default async function Post({ params }: {
 		notFound();
 	}
 
+	const comments = await getComments(awaitedParams.id);
+
 	return (
 		<div className={styles.wrapper}>
 			<Title className={styles.title} size='xl'>{post.title}</Title>
@@ -88,6 +91,8 @@ export default async function Post({ params }: {
 			</picture>
 			<Paragraph className={styles.paragraph} size='lg'>{post.body}</Paragraph>
 			<PostLike className={styles.like} postId={post.id} />
+			<Title as='h3' size='lg' className={styles['comments-title']}>Комментарии</Title>
+			{comments && <Comments comments={comments} />}
 		</div>
 	)
 }
