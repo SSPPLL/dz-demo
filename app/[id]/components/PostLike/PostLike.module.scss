@@ -1,0 +1,14 @@
+.like {
+	&-wrapper {
+		display: grid;
+		grid-gap: 18px;
+		grid-template-columns: auto 48px;
+		align-items: center;
+
+		max-width: 220px;
+
+		span {
+			white-space: nowrap;
+		}
+	}
+}

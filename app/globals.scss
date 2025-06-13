@@ -6,8 +6,8 @@
 	--c-black-30: #4B4B4B;
 	--c-black-70: #303030;
 	--c-primary: #1473E6;
-	--c-button: #303030;
 	--c-border: #F5F5F5;
+	--c-red: #c51818;
 	--background: var(--c-white);
 	--foreground: var(--c-black);
 }
@@ -30,4 +30,8 @@ a {
 	max-width: 1146px;
 	margin: 0 auto;
 	padding: 0 15px;
+}
+
+.footer {
+	padding: 40px 0;
 }

@@ -1,0 +1,57 @@
+.wrapper {
+	width: 100%;
+	max-width: 657px;
+}
+
+.info {
+	margin-top: 13px;
+}
+
+.picture {
+	position: relative;
+	z-index: 1;
+
+	display: block;
+
+	width: 100%;
+	max-width: 638px;
+	margin-top: 20px;
+
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		padding-top: 61.1285%;
+	}
+}
+
+.image {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+	object-position: center;
+}
+
+.paragraph {
+	margin-top: 35px;
+}
+
+.like {
+	margin-top: 20px;
+}
+
+.comments {
+	&-title {
+		margin-top: 35px;
+	}
+}
+
+.form {
+	margin-top: 25px;
+}

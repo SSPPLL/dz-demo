@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { FC, ReactElement } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import cn from 'classnames'
@@ -7,7 +7,7 @@ import { CardProps } from './types';
 import { CardLink, Info, LikeCounter, Paragraph, Title } from '../ui';
 import { InfoList } from '../InfoList/InfoList';
 
-export const Card = ({
+export const Card: FC<CardProps> = ({
 	href,
 	link,
 	title,
@@ -19,7 +19,7 @@ export const Card = ({
 	category,
 	className,
 	...props
-}: CardProps): ReactElement => {
+}): ReactElement => {
 	return (
 		<li {...props} className={cn(styles.outer, className)}>
 			<Link className={styles.image_outer} href={href}>

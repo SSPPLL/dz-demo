@@ -26,6 +26,7 @@ export default function RootLayout({
 				<div className='container'>
 					<Header />
 					<main>{children}</main>
+					<footer className='footer'></footer>
 				</div>
 			</body>
 		</html>
