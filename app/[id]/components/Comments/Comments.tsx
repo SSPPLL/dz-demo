@@ -25,7 +25,7 @@ export const Comments: FC<CommentsProps> = ({
 								children: email
 							}
 						]} />
-						<Paragraph className={styles['comment-body']} size='md'>{body}</Paragraph>
+						<Paragraph className={styles['comment-body']} size='lg'>{body}</Paragraph>
 					</li>
 				)
 			})}
