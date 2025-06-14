@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import cn from 'classnames'
@@ -6,8 +6,9 @@ import styles from './Card.module.scss'
 import { CardProps } from './types';
 import { CardLink, Info, LikeCounter, Paragraph, Title } from '../ui';
 import { InfoList } from '../InfoList/InfoList';
+import { motion } from 'motion/react';
 
-export const Card: FC<CardProps> = ({
+export const Card = motion.create(({
 	href,
 	link,
 	title,
@@ -19,7 +20,7 @@ export const Card: FC<CardProps> = ({
 	category,
 	className,
 	...props
-}): ReactElement => {
+}: CardProps): ReactElement => {
 	return (
 		<li {...props} className={cn(styles.outer, className)}>
 			<Link className={styles.image_outer} href={href}>
@@ -44,4 +45,4 @@ export const Card: FC<CardProps> = ({
 			</div>
 		</li>
 	)
-}
+})
