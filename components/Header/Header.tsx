@@ -11,9 +11,9 @@ export const Header: FC<HeaderProps> = ({
 }): ReactElement => {
 	return (
 		<header {...props} className={cn(styles.defaults, className)}>
-			<Link className={styles.logo} href='/'>.my_blog</Link>
-			<Link className={styles.github_link} href='https://github.com/SSPPLL' target='_blank'>
-				<GithubLogo className={styles.github} />
+			<Link className={styles.logo} href='/' aria-label='.my_blog - Перейти на главную'>.my_blog</Link>
+			<Link className={styles.github_link} href='https://github.com/SSPPLL' target='_blank' aria-label='Профиль GitHub'>
+				<GithubLogo className={styles.github} aria-hidden={true} />
 			</Link>
 		</header>
 	)

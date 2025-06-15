@@ -4,21 +4,24 @@ import cn from 'classnames'
 import styles from './CardGrid.module.scss'
 import { CardGridProps } from './types';
 import { Card } from '../Card/Card';
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 
 export const CardGrid: FC<CardGridProps> = ({
 	posts,
 	className,
 	...props
 }): ReactElement => {
+	const shouldReduceMotion = useReducedMotion();
 	return (
 		<motion.ul
 			layout
 			variants={{
-				hidden: { opacity: 0 },
+				hidden: {
+					opacity: shouldReduceMotion ? 1 : 0
+				},
 				visible: {
 					opacity: 1,
-					transition: {
+					transition: shouldReduceMotion ? {} : {
 						staggerChildren: 0.1
 					}
 				}
@@ -26,6 +29,8 @@ export const CardGrid: FC<CardGridProps> = ({
 			initial='hidden'
 			animate='visible'
 			className={cn(styles.defaults, className)}
+			aria-label='Статьи'
+			tabIndex={0}
 			{...props}
 		>
 			{posts.map(({ id, title, body }) => (
@@ -35,7 +40,7 @@ export const CardGrid: FC<CardGridProps> = ({
 							opacity: 1
 						},
 						hidden: {
-							opacity: 0
+							opacity: shouldReduceMotion ? 1 : 0
 						}
 					}}
 					key={id}
