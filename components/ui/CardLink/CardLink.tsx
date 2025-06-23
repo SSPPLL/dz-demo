@@ -1,15 +1,15 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import styles from './CardLink.module.scss'
 import cn from 'classnames'
 import { CardLinkProps } from './types'
 import ArrowIcon from './arrow.svg'
 import Link from 'next/link'
 
-export const CardLink = ({
+export const CardLink: FC<CardLinkProps> = ({
 	children,
 	className,
 	...props
-}: CardLinkProps): ReactElement => {
+}): ReactElement => {
 	return (
 		<Link {...props} className={cn(styles.defaults, className)}>
 			{children}
