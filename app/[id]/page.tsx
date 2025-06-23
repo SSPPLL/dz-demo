@@ -9,6 +9,7 @@ import { CommentForm, InfoList } from '@/components';
 import Image from 'next/image';
 import { Comments, PostLike } from './components';
 import { getComments } from '@/api/comments';
+import { InfoListItem } from '@/components/InfoList/types';
 
 interface PageParams {
 	id: string
@@ -50,6 +51,23 @@ export async function generateStaticParams() {
 	}))
 }
 
+const infoListItems: InfoListItem[] = [
+	{
+		color: 'dark',
+		children: <><span className='visually-hidden'>Категория: </span>Front-end</>
+	},
+	{
+		children: <><span className='visually-hidden'>Время публикации: </span>1 месяц назад</>
+	},
+	{
+		children: <><span className='visually-hidden'>Время на прочтение: </span>3 минуты</>
+	},
+	{
+		likes: true,
+		children: '4'
+	}
+];
+
 export default async function Post({ params }: {
 	params: Promise<PageParams>
 }): Promise<ReactElement> {
@@ -71,22 +89,7 @@ export default async function Post({ params }: {
 		<div className={styles.wrapper}>
 			<article role='article' aria-label='Статья' tabIndex={0}>
 				<Title as='h1' className={styles.title} size='xl'>{post.title}</Title>
-				<InfoList className={styles.info} items={[
-					{
-						color: 'dark',
-						children: <><span className='visually-hidden'>Категория: </span>Front-end</>
-					},
-					{
-						children: <><span className='visually-hidden'>Время публикации: </span>1 месяц назад</>
-					},
-					{
-						children: <><span className='visually-hidden'>Время на прочтение: </span>3 минуты</>
-					},
-					{
-						likes: true,
-						children: '4'
-					}
-				]} />
+				<InfoList className={styles.info} items={infoListItems} />
 				<picture className={styles.picture}>
 					<Image className={styles.image} src='/post.jpg' width={638} height={390} alt={post.title} priority={true} aria-hidden={true} />
 				</picture>
