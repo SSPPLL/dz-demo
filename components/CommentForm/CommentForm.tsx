@@ -13,7 +13,7 @@ export const CommentForm: FC<CommentFormProps> = ({
 	className,
 	...props
 }): ReactElement => {
-	const { register, handleSubmit, formState: { errors }, reset } = useForm<CommentFormValues>();
+	const { register, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<CommentFormValues>();
 	const [isSending, setSending] = useState<boolean>(false);
 
 	const onSubmit = async (formData: CommentFormValues) => {
@@ -31,9 +31,14 @@ export const CommentForm: FC<CommentFormProps> = ({
 		}
 	}
 	return (
-		<form className={cn(styles.form, className, {
-			[styles.sending]: isSending
-		})} {...props} onSubmit={handleSubmit(onSubmit)}>
+		<form
+			className={cn(styles.form, className, {
+				[styles.sending]: isSending
+			})} {...props}
+			onSubmit={handleSubmit(onSubmit)}
+			aria-label='Форма комментария'
+			tabIndex={0}
+		>
 			<Input
 				className={styles.name}
 				{...register('name', {
@@ -44,7 +49,9 @@ export const CommentForm: FC<CommentFormProps> = ({
 				})}
 				type='text'
 				placeholder='Имя'
+				aria-label='Имя'
 				error={errors.name}
+				aria-invalid={errors.name ? true : false}
 			/>
 			<Textarea
 				className={styles.name}
@@ -55,13 +62,18 @@ export const CommentForm: FC<CommentFormProps> = ({
 					}
 				})}
 				placeholder='Комментарий'
+				aria-label='Комментарий'
 				error={errors.body}
+				aria-invalid={errors.body ? true : false}
 			/>
 			<Button
 				className={styles.button}
 				type='submit'
 				disabled={isSending}
-			>Отправить</Button>
+				onClick={() => clearErrors()}
+			>
+				Отправить
+			</Button>
 		</form>
 	)
 }

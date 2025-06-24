@@ -9,6 +9,7 @@ import { CommentForm, InfoList } from '@/components';
 import Image from 'next/image';
 import { Comments, PostLike } from './components';
 import { getComments } from '@/api/comments';
+import { DEFAULT_POST_INFO } from '@/utils/const/post-data';
 
 interface PageParams {
 	id: string
@@ -69,28 +70,15 @@ export default async function Post({ params }: {
 
 	return (
 		<div className={styles.wrapper}>
-			<Title className={styles.title} size='xl'>{post.title}</Title>
-			<InfoList className={styles.info} items={[
-				{
-					color: 'dark',
-					children: 'Front-end'
-				},
-				{
-					children: '1 месяц назад'
-				},
-				{
-					children: '3 минуты'
-				},
-				{
-					likes: true,
-					children: '4'
-				}
-			]} />
-			<picture className={styles.picture}>
-				<Image className={styles.image} src='/post.jpg' width={638} height={390} alt={post.title} priority={true} />
-			</picture>
-			<Paragraph className={styles.paragraph} size='lg'>{post.body}</Paragraph>
-			<PostLike className={styles.like} postId={post.id} />
+			<article role='article' aria-label='Статья' tabIndex={0}>
+				<Title as='h1' className={styles.title} size='xl'>{post.title}</Title>
+				<InfoList className={styles.info} items={DEFAULT_POST_INFO} />
+				<picture className={styles.picture}>
+					<Image className={styles.image} src='/post.jpg' width={638} height={390} alt={post.title} priority={true} aria-hidden={true} />
+				</picture>
+				<Paragraph className={styles.paragraph} size='lg' aria-label='Текст статьи'>{post.body}</Paragraph>
+				<PostLike className={styles.like} postId={post.id} />
+			</article>
 			<Title as='h3' size='lg' className={styles['comments-title']}>Комментарии</Title>
 			{comments && <Comments comments={comments} />}
 			<CommentForm postId={post.id} className={styles.form} />

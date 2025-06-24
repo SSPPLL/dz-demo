@@ -1,8 +1,8 @@
 import { getPosts } from '@/api/posts';
 import { CardGrid } from '@/components/CardGrid/CardGrid';
-import { Card } from '@/components';
 import { ReactElement } from 'react';
 import { Metadata } from 'next';
+import { Title } from '@/components/ui';
 
 export const metadata: Metadata = {
 	title: "My blog"
@@ -17,21 +17,8 @@ export default async function Home(): Promise<ReactElement> {
 
 	return (
 		<>
-			<CardGrid>
-				{posts.map(({ id, title, body }) => (
-					<Card key={id}
-						title={title}
-						description={body}
-						category='Front-end'
-						link='Читать'
-						time='3 минуты'
-						date='1 месяц назад'
-						likes='4'
-						image='/card-small.jpg'
-						href={`/${id}`}
-					/>
-				))}
-			</CardGrid>
+			<Title as='h1' className='visually-hidden'>Блог статей</Title>
+			<CardGrid posts={posts} />
 		</>
 	);
 }

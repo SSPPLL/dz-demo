@@ -11,8 +11,8 @@ export const LikeCounter: FC<LikeCounterProps> = ({
 }): ReactElement => {
 	return (
 		<span {...props} className={cn(styles.defaults, className)}>
-			{children}
-			<LikeIcon className={styles.icon} width={16} height={16} />
+			<span className='visually-hidden'>Количество лайков: </span>{children}
+			<LikeIcon aria-hidden={true} className={styles.icon} width={16} height={16} />
 		</span>
 	)
 }
